@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: shaarli
+spec:
+  selector:
+    app: shaarli
+  ports:
+  - protocol: TCP
+    port: 80

@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: shaarli
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  backend:
+    serviceName: default-http-backend
+    servicePort: 80
+  rules:
+  - host: minikube.meetup.demo
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: shaarli
+          servicePort: 80

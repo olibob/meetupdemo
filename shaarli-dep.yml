@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: shaarli
+  name: shaarli
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shaarli
+  template:
+    metadata:
+      labels:
+        app: shaarli
+    spec:
+      containers:
+      - image: olibob/shaarli:uid1000
+        name: shaarli
+        ports:
+          - containerPort: 80
+        imagePullPolicy: Always
+        volumeMounts:
+          - mountPath: /var/www/shaarli/data
+            name: data
+      volumes:
+      - name: data
+        emptyDir: {}
